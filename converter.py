@@ -6,7 +6,7 @@ for filename in os.listdir(directory):
     if filename.lower().endswith(".heic"): 
         print('Converting %s...' % os.path.join(directory, filename))
         subprocess.run(["magick", "%s" % filename, "%s" % (filename[0:-5] + '.jpg')])
-        os.popen("rm {}".format(os.path.join(directory, filename)))
+        os.remove(os.path.join(directory, filename))
         continue
     elif filename.lower().endswith(".mov"):
         print("Video")
@@ -15,7 +15,7 @@ for filename in os.listdir(directory):
         p = subprocess.Popen(some_command, stdout=subprocess.PIPE, shell=True)
         (output, err) = p.communicate()  
         p_status = p.wait()
-        os.popen("rm {}".format(os.path.join(directory, filename)))
+        os.remove(os.path.join(directory, filename))
         continue
         
         
